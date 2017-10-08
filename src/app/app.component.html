@@ -1,0 +1,13 @@
+<h1>{{title}}</h1>
+
+<h2>People</h2>
+<table>
+  <th *ngFor="let colNa of colName">
+    {{colNa}}
+  </th>
+  <tr *ngFor="let person of people, let i = index">
+    <td *ngFor="let colNa of colName">
+      {{person[colNa]}}
+    </td>
+  </tr>
+</table>
