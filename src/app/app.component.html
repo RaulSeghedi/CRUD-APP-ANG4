@@ -1,13 +1,36 @@
 <h1>{{title}}</h1>
 
-<h2>People</h2>
-<table>
-  <th *ngFor="let colNa of colName">
-    {{colNa}}
-  </th>
-  <tr *ngFor="let person of people, let i = index">
-    <td *ngFor="let colNa of colName">
-      {{person[colNa]}}
-    </td>
-  </tr>
-</table>
+<h2>Add people</h2>
+
+<div>
+  <input type="text" placeholder="Enter name ..." #name>
+  <input type="number" placeholder="Enter age ..." #age>
+  <button (click)="addPerson(name.value, age.value)">ADD</button>
+</div>
+
+<div class="content">
+  <h2>People</h2>
+  <table>
+    <th *ngFor="let colNa of colName">
+      {{colNa}}
+    </th>
+    <tr *ngFor="let person of people, let i = index">
+      <td *ngFor="let colNa of colName">
+        {{person[colNa]}}
+      </td>
+      <button (click)="deletePerson(i, person.id)">DELETE</button>
+      <button (click)="updatePerson(i)">UPDATE</button>
+    </tr>
+  </table>
+</div>
+
+<div class="content">
+  <button (click)="erase()">ERASE THE ENTIRE LIST</button>
+</div>
+
+<div class="content" *ngIf="isEdit">
+  <h2>Update</h2>
+  <input [(ngModel)]="person.name" type="text" placeholder="name">
+  <input [(ngModel)]="person.age" type="number" placeholder="age">
+  <button (click)="savePerson()">SAVE</button>
+</div>
