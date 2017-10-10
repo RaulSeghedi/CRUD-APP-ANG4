@@ -15,23 +15,42 @@ export class AppComponent implements OnInit {
   people: any[] = [];
   isEdit: boolean = false;
   person: any;
+  sortedType = "asc";
 
   @ViewChild('name') personName;
   @ViewChild('age') personAge;
 
   ngOnInit() {
     this.fetchData();
+
+    this.dataService.getLocalData().subscribe(response => {
+      console.log(response, "----------------------------");
+    })
   }
 
+  sortList() {
+    this.sortedType == "asc" ? this.sortedType = "desc" : this.sortedType = "asc";
+    this.fetchData()
+  }
+
+
+/*
   fetchData() {
     this.dataService.getData().subscribe(response => {
       this.people = response;
       console.log(response);
     })
   }
+*/
+
+  fetchData() {
+    this.dataService.getSortedDataByName(this.sortedType).subscribe(response => {
+      this.people = response;
+    })
+  }
 
   erase() {
-    this.dataService.eraseData().subscribe(response => {
+    this.dataService.eraseData().subscribe(() => {
       this.people = [];
     })
   }

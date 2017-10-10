@@ -10,6 +10,7 @@
 
 <div class="content">
   <h2>People</h2>
+  <button (click)="sortList()">{{sortedType}}</button>
   <table>
     <th *ngFor="let colNa of colName">
       {{colNa}}
@@ -23,6 +24,7 @@
     </tr>
   </table>
 </div>
+
 
 <div class="content">
   <button (click)="erase()">ERASE THE ENTIRE LIST</button>
