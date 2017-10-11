@@ -23,21 +23,21 @@ export class DataService {
   }
 
   deleteData(id) {
-    return this.http.delete(`http://localhost:3000/${id}`)
+    return this.http.delete("http://localhost:3000/" + id)
       .map(response => response.json());
   }
 
   saveUpdatedData(id, body) {
-    return this.http.put(`http://localhost:3000/${id}`, body)
+    return this.http.put("http://localhost:3000/" + id, body)
       .map(response => response.json());
   }
 
   getSortedDataByName(sortedType) {
-    return this.http.get(`http://localhost:3000/sorted/${sortedType}`)
+    return this.http.get("http://localhost:3000/sorted/" + sortedType)
       .map(response=>response.json());
   }
 
-  getLocalData(){
+  getLocalData() {
     return this.http.get('/assets/json.json')
       .map(response => response.json());
   }

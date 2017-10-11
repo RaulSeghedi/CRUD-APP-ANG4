@@ -34,14 +34,14 @@ export class AppComponent implements OnInit {
   }
 
 
-/*
-  fetchData() {
-    this.dataService.getData().subscribe(response => {
-      this.people = response;
-      console.log(response);
-    })
-  }
-*/
+  /*
+   fetchData() {
+   this.dataService.getData().subscribe(response => {
+   this.people = response;
+   console.log(response);
+   })
+   }
+   */
 
   fetchData() {
     this.dataService.getSortedDataByName(this.sortedType).subscribe(response => {
@@ -87,8 +87,7 @@ export class AppComponent implements OnInit {
           p.age = response.age;
         }
       })
+      this.isEdit = false;
     })
-    this.isEdit = false;
   }
 }
-
